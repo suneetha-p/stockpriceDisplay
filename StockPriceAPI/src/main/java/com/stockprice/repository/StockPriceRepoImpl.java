@@ -29,21 +29,6 @@ public class StockPriceRepoImpl implements StockPriceRepo{
     public void save(StockPrice stockPrice){
         entityManager.persist(stockPrice);
     }
-
-    private List<ObjectNode> _toJson(List<Tuple> results) {
-        List<ObjectNode> json = new ArrayList<ObjectNode>();
-        ObjectMapper mapper = new ObjectMapper();
-        for (Tuple t : results)
-        {
-            List<TupleElement<?>> cols = t.getElements();
-            ObjectNode one = mapper.createObjectNode();
-            for (TupleElement col : cols)
-            {
-                one.put(col.getAlias(), t.get(col.getAlias()).toString());
-            }
-            json.add(one);
-        }
-        return json;
-    }
+    
 
 }
